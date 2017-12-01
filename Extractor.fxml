@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sportextractor.ExtractorController">
+   <children>
+      <HBox prefHeight="480.0" prefWidth="900.0">
+         <children>
+            <TabPane prefHeight="480.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Zakłady">
+                     <content>
+                        <AnchorPane prefHeight="480.0" prefWidth="900.0">
+                           <children>
+                              <HBox layoutX="200.0" layoutY="1.0" prefHeight="450.0" prefWidth="700.0">
+                                 <children>
+                                    <TableView fx:id="matchTable" prefHeight="450.0" prefWidth="700.0">
+                                      <columns>
+                                        <TableColumn fx:id="downloadDateColumn" prefWidth="75.0" text="download_date" />
+                                        <TableColumn fx:id="homeNameColumn" prefWidth="75.0" text="home_name" />
+                                          <TableColumn fx:id="awayNameColumn" prefWidth="75.0" text="away_name" />
+                                          <TableColumn fx:id="homeRateColumn" prefWidth="75.0" text="home_rate" />
+                                          <TableColumn fx:id="drawRateColumn" prefWidth="75.0" text="draw_rate" />
+                                          <TableColumn fx:id="awayRateColumn" prefWidth="75.0" text="away_rate" />
+                                          <TableColumn fx:id="matchDateColumn" prefWidth="75.0" text="match_date" />
+                                          <TableColumn fx:id="matchTimeColumn" prefWidth="75.0" text="match_time" />
+                                          <TableColumn fx:id="matchResultColumn" prefWidth="75.0" text="result" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </HBox>
+                              <VBox prefHeight="450.0" prefWidth="200.0">
+                                 <children>
+                                    <ComboBox fx:id="comboCategory" onAction="#loadMatchData" prefHeight="25.0" prefWidth="205.0" promptText="wybierz ligę" />
+                                    <Button fx:id="loadMatchButton" mnemonicParsing="false" onAction="#loadAllMatchData" prefHeight="25.0" prefWidth="202.0" text="Wczytaj" />
+                                    <Button fx:id="updateButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="213.0" text="Uaktualnij" />
+                                    <Button fx:id="updateAllButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="225.0" text="uaktualnij wszystkie" />
+                                 </children></VBox>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                <Tab text="Statystyki">
+                     <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                     </content>
+                  </Tab>
+                  <Tab text="Kategorie">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <HBox layoutX="200.0" prefHeight="450.0" prefWidth="600.0">
+                                 <children>
+                                    <TableView fx:id="categoryTable" prefHeight="450.0" prefWidth="600.0">
+                                      <columns>
+                                        <TableColumn fx:id="leagueNameColumn" prefWidth="156.0" text="Leagure_Name" />
+                                        <TableColumn fx:id="leagueLinkColumn" minWidth="9.0" prefWidth="268.0" text="League_Link" />
+                                          <TableColumn fx:id="leagueCustomNameColumn" prefWidth="138.0" text="League_Custom_Name" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </HBox>
+                              <VBox prefHeight="450.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="25.0" prefWidth="205.0" text="Dodaj kategorię">
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField fx:id="leagueName" promptText="League Name" />
+                                    <TextField fx:id="leagueLink" promptText="League Link" />
+                                    <TextField fx:id="customName" promptText="Custom Name" />
+                                    <Button fx:id="addLeagueButton" mnemonicParsing="false" onAction="#addCategory" prefHeight="25.0" prefWidth="208.0" text="Dodaj" />
+                                    <Button fx:id="clearLeagueButton" mnemonicParsing="false" onAction="#clearFields" prefHeight="25.0" prefWidth="206.0" text="Wyczyść" />
+                                    <Button fx:id="loadLeagueButton" mnemonicParsing="false" onAction="#loadCategoryData" prefHeight="25.0" prefWidth="203.0" text="Wczytaj" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Pomoc">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </HBox>
+      <Label layoutX="12.0" layoutY="482.0" text="Status:" />
+      <Label fx:id="db" layoutX="61.0" layoutY="482.0" prefHeight="17.0" prefWidth="200.0" />
+      <Label layoutX="315.0" layoutY="482.0" text="Ostatnia akcja:" />
+      <Label fx:id="lastAction" layoutX="408.0" layoutY="482.0" prefHeight="17.0" prefWidth="370.0" />
+   </children>
+</AnchorPane>
